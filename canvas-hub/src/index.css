@@ -1,0 +1,88 @@
+@import '@xyflow/react/dist/style.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --canvas-bg: #1a1a2e;
+  --canvas-grid: #2a2a4a;
+  --toolbar-bg: rgba(30, 30, 60, 0.95);
+  --node-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--canvas-bg);
+  color: #e2e8f0;
+  overflow: hidden;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* React Flow overrides */
+.react-flow__background {
+  background-color: var(--canvas-bg) !important;
+}
+
+.react-flow__minimap {
+  background-color: rgba(30, 30, 60, 0.9) !important;
+  border-radius: 8px;
+  border: 1px solid #3a3a6a;
+}
+
+.react-flow__controls {
+  border-radius: 8px;
+  border: 1px solid #3a3a6a;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background: var(--toolbar-bg) !important;
+  color: #e2e8f0 !important;
+  border-bottom: 1px solid #3a3a6a !important;
+}
+
+.react-flow__controls-button:hover {
+  background: rgba(60, 60, 100, 0.95) !important;
+}
+
+/* TipTap editor styles */
+.tiptap-editor {
+  outline: none;
+  min-height: 100px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tiptap-editor p {
+  margin: 0.25em 0;
+}
+
+.tiptap-editor h1 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.tiptap-editor h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+.tiptap-editor ul,
+.tiptap-editor ol {
+  padding-left: 1.5em;
+}
+
+.tiptap-editor .is-editor-empty:first-child::before {
+  color: #64748b;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
