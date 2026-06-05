@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#0b1120"/><stop offset="1" stop-color="#0f172a"/>
+</linearGradient>
+<radialGradient id="glow" cx="0.12" cy="0.0" r="0.9">
+<stop offset="0" stop-color="#34d39922"/><stop offset="1" stop-color="#34d39900"/>
+</radialGradient>
+</defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<rect width="1200" height="675" fill="url(#glow)"/>
+<rect x="0" y="0" width="6" height="675" fill="#34d399"/>
+<text x="60" y="70" font-size="40" font-weight="700" fill="#f8fafc"
+ font-family="-apple-system,Hiragino Sans,sans-serif">auth-system</text>
+<rect x="973" y="44" rx="14" ry="14" width="167" height="30"
+ fill="#34d39922" stroke="#34d399"/>
+<text x="1056" y="64" text-anchor="middle" font-size="13"
+ fill="#34d399" font-family="ui-monospace,monospace">Fastify · JWT</text>
+<text x="60" y="108" font-size="17" fill="#94a3b8"
+ font-family="-apple-system,Hiragino Sans,sans-serif">API Gateway の JWT自前実装認証 (設計ドキュメント + 実装例)</text>
+<rect x="60" y="150" rx="13" ry="13" width="99" height="26" fill="#34d3991a" stroke="#34d39955"/><text x="109" y="168" text-anchor="middle" font-size="13" fill="#cbd5e1" font-family="ui-monospace,Menlo,monospace">Fastify 4</text>
+<rect x="169" y="150" rx="13" ry="13" width="126" height="26" fill="#34d3991a" stroke="#34d39955"/><text x="232" y="168" text-anchor="middle" font-size="13" fill="#cbd5e1" font-family="ui-monospace,Menlo,monospace">@fastify/jwt</text>
+<rect x="305" y="150" rx="13" ry="13" width="90" height="26" fill="#34d3991a" stroke="#34d39955"/><text x="350" y="168" text-anchor="middle" font-size="13" fill="#cbd5e1" font-family="ui-monospace,Menlo,monospace">bcryptjs</text>
+<rect x="405" y="150" rx="13" ry="13" width="71" height="26" fill="#34d3991a" stroke="#34d39955"/><text x="440" y="168" text-anchor="middle" font-size="13" fill="#cbd5e1" font-family="ui-monospace,Menlo,monospace">Prisma</text>
+<rect x="486" y="150" rx="13" ry="13" width="44" height="26" fill="#34d3991a" stroke="#34d39955"/><text x="508" y="168" text-anchor="middle" font-size="13" fill="#cbd5e1" font-family="ui-monospace,Menlo,monospace">Zod</text>
+<rect x="540" y="150" rx="13" ry="13" width="274" height="26" fill="#34d3991a" stroke="#34d39955"/><text x="676" y="168" text-anchor="middle" font-size="13" fill="#cbd5e1" font-family="ui-monospace,Menlo,monospace">React 18 + Vite (canvas-hub)</text>
+<text x="60" y="194" font-size="13" fill="#34d399" letter-spacing="2"
+ font-family="ui-monospace,monospace">ARCHITECTURE / FLOW</text>
+<rect x="60" y="204" rx="10" ry="10" width="1080" height="46" fill="#11182799" stroke="#34d39966"/><circle cx="92" cy="227" r="11" fill="#34d39933" stroke="#34d399"/><text x="92" y="231" text-anchor="middle" font-size="12" fill="#34d399" font-family="ui-monospace,monospace">1</text><text x="118" y="232" font-size="15" fill="#e2e8f0" font-family="-apple-system,Hiragino Sans,sans-serif">POST /register — Zod検証 → Organization作成(STARTER)</text>
+<line x1="84" y1="250" x2="84" y2="281" stroke="#34d39999" stroke-width="2"/><polygon points="84,281 80,275 88,275" fill="#34d39999"/>
+<rect x="60" y="281" rx="10" ry="10" width="1080" height="46" fill="#11182799" stroke="#34d39966"/><circle cx="92" cy="304" r="11" fill="#34d39933" stroke="#34d399"/><text x="92" y="308" text-anchor="middle" font-size="12" fill="#34d399" font-family="ui-monospace,monospace">2</text><text x="118" y="309" font-size="15" fill="#e2e8f0" font-family="-apple-system,Hiragino Sans,sans-serif">bcrypt.hash(pw,10) → User作成(OWNER) → JWT署名(HS256/7d)</text>
+<line x1="84" y1="327" x2="84" y2="358" stroke="#34d39999" stroke-width="2"/><polygon points="84,358 80,352 88,352" fill="#34d39999"/>
+<rect x="60" y="358" rx="10" ry="10" width="1080" height="46" fill="#11182799" stroke="#34d39966"/><circle cx="92" cy="381" r="11" fill="#34d39933" stroke="#34d399"/><text x="92" y="385" text-anchor="middle" font-size="12" fill="#34d399" font-family="ui-monospace,monospace">3</text><text x="118" y="386" font-size="15" fill="#e2e8f0" font-family="-apple-system,Hiragino Sans,sans-serif">POST /login — findUnique → bcrypt.compare → JWT署名</text>
+<line x1="84" y1="404" x2="84" y2="435" stroke="#34d39999" stroke-width="2"/><polygon points="84,435 80,429 88,429" fill="#34d39999"/>
+<rect x="60" y="435" rx="10" ry="10" width="1080" height="46" fill="#11182799" stroke="#34d39966"/><circle cx="92" cy="458" r="11" fill="#34d39933" stroke="#34d399"/><text x="92" y="462" text-anchor="middle" font-size="12" fill="#34d399" font-family="ui-monospace,monospace">4</text><text x="118" y="463" font-size="15" fill="#e2e8f0" font-family="-apple-system,Hiragino Sans,sans-serif">requireAuth — request.jwtVerify() 失敗401 / 成功で user設定</text>
+<line x1="84" y1="481" x2="84" y2="512" stroke="#34d39999" stroke-width="2"/><polygon points="84,512 80,506 88,506" fill="#34d39999"/>
+<rect x="60" y="512" rx="10" ry="10" width="1080" height="46" fill="#11182799" stroke="#34d39966"/><circle cx="92" cy="535" r="11" fill="#34d39933" stroke="#34d399"/><text x="92" y="539" text-anchor="middle" font-size="12" fill="#34d399" font-family="ui-monospace,monospace">5</text><text x="118" y="540" font-size="15" fill="#e2e8f0" font-family="-apple-system,Hiragino Sans,sans-serif">GET /me — payload.sub で User取得 → 返却</text>
+<line x1="84" y1="558" x2="84" y2="589" stroke="#34d39999" stroke-width="2"/><polygon points="84,589 80,583 88,583" fill="#34d39999"/>
+<rect x="60" y="589" rx="10" ry="10" width="1080" height="46" fill="#11182799" stroke="#34d39966"/><circle cx="92" cy="612" r="11" fill="#34d39933" stroke="#34d399"/><text x="92" y="616" text-anchor="middle" font-size="12" fill="#34d399" font-family="ui-monospace,monospace">6</text><text x="118" y="617" font-size="15" fill="#e2e8f0" font-family="-apple-system,Hiragino Sans,sans-serif">保護ルート: requireAuth / requireOwner (governance ほか)</text>
+</svg>
